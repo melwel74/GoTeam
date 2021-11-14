@@ -1,0 +1,29 @@
+{
+  "name": "goteam",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "directories": {
+    "lib": "lib"
+  },
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/melwel74/GoTeam.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/melwel74/GoTeam/issues"
+  },
+  "homepage": "https://github.com/melwel74/GoTeam#readme",
+  "devDependencies": {
+    "jest": "^27.3.1"
+  },
+  "dependencies": {
+    "inquirer": "^8.2.0"
+  }
+}
