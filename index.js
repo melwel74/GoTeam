@@ -34,26 +34,48 @@ inquirer.prompt([
     .then(answers => {
         console.log("you made a ")
         console.log(answers.userChoice)
-        if (answers.userChoice==="Engineer"){
+        if (answers.userChoice === "Engineer") {
             //ask engineer questions and create a engineer
             createEngineer()
         }
-        else if (answers.userChoice==="Intern"){
+        else if (answers.userChoice === "Intern") {
             //ask intern questions and create intern
             createIntern()
         }
 
-        else if (answers.userChoice==="Manager"){
+        else if (answers.userChoice === "Manager") {
             //ask manager questions and create manager
             createManager()
         }
         else {
             //finish program
+            const fs = require("fs");
+
+            fs.writeFile("log.txt", process.argv[2], function (err) {
+
+                if (err) {
+                    return console.log(err);
+                }
+
+                console.log("Done!");
+
+            });
+
+            fs.readFile("log.txt", "utf8", function (error, log) {
+
+                if (error) {
+                    return console.log(error);
+                }
+
+                console.log(log);
+
+            });
         }
-        
+
+
     })
 
-function createEngineer (){
+function createEngineer() {
     inquirer.prompt([
         {
             message: "what is the Engineer name",
@@ -74,17 +96,17 @@ function createEngineer (){
         {
             message: "what is the Engineer github",
             type: "input",
-            name:"engineerGitHub",
+            name: "engineerGitHub",
         }
     ])
         .then(engineerAnswers => {
-            const newEngineer = new Engineer(engineerAnswers.engineerName, engineerAnswers.engineerId, engineerAnswers.engineerEmail, engineerAnswers.engineerGitHub)  
+            const newEngineer = new Engineer(engineerAnswers.engineerName, engineerAnswers.engineerId, engineerAnswers.engineerEmail, engineerAnswers.engineerGitHub)
 
         })
 }
 
 
-function createManager (){
+function createManager() {
     inquirer.prompt([
         {
             message: "what is the Manager name",
@@ -105,16 +127,16 @@ function createManager (){
         {
             message: "what is Manager office number",
             type: "input",
-            name:"managerOfficeNumber",
+            name: "managerOfficeNumber",
         }
     ])
         .then(managerAnswers => {
-            const newManager = new Manager(managerAnswers.managerName, managerAnswers.managerId, managerAnswers.managerEmail, managerAnswers.managerOfficeNumber)  
+            const newManager = new Manager(managerAnswers.managerName, managerAnswers.managerId, managerAnswers.managerEmail, managerAnswers.managerOfficeNumber)
 
         })
 }
 
-function createIntern (){
+function createIntern() {
     inquirer.prompt([
         {
             message: "what is the Intern name",
@@ -135,11 +157,11 @@ function createIntern (){
         {
             message: "what is Intern School",
             type: "input",
-            name:"internSchool",
+            name: "internSchool",
         }
     ])
         .then(internAnswers => {
-            const newIntern = new Intern(internAnswers.internName, internAnswers.internId, internAnswers.internEmail, internAnswers.internSchool)  
+            const newIntern = new Intern(internAnswers.internName, internAnswers.internId, internAnswers.internEmail, internAnswers.internSchool)
 
         })
 }
